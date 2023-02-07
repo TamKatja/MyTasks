@@ -1,0 +1,59 @@
+// Button styles
+
+@use 'variables';
+
+%btn {
+    background-color: variables.$primary-color;
+    border: none;
+    border-radius: 0.25rem;
+    color: white; 
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    height: 30px;
+    width: 30px;
+}
+
+#add-list,
+#add-task {
+    @extend %btn;
+
+    &:hover {
+        background-color: darken(variables.$primary-color, 2%);
+    }
+}
+
+#toggle-nav {
+    @extend %btn;
+    background-color: transparent;
+}
+
+.list-checkbox,
+.task-checkbox {
+    background-color: variables.$navbar-color;
+    border: 1px solid variables.$primary-color;
+    border-radius: 0.25rem;
+    color: variables.$primary-color;
+    font-weight: bold;
+    flex-shrink: 0;
+    height: 1rem;
+    width: 1rem;
+
+    &:hover {
+        background-color: darken(variables.$navbar-color, 10%);
+    }
+}
+
+.login-btn,
+.register-btn {
+    background-color: variables.$primary-color;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    color: white;
+    font-size: 1rem;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+
+    &:hover {
+        background-color: darken(variables.$primary-color, 10%);
+    }
+}

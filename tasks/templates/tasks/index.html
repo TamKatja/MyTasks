@@ -1,0 +1,49 @@
+{% extends "tasks/layout.html" %}
+{% load static %}
+
+{% block content %}
+<header>
+    <div class="navbar-control">
+        <button id="toggle-nav">
+            <img src="{% static 'tasks/images/icons/navbar-control-icon.svg' %}">
+        </button>
+    </div>
+    <div>Logged in as {{request.user}}</div>
+    <a href="{% url 'logout' %}">
+        <img src="{% static 'tasks/images/icons/logout-icon.svg' %}">
+    </a>
+</header>
+<nav class="navbar">
+    <a href="{% url 'index' %}"><strong>All Tasks 📥</strong></a>
+    <p class="my-lists-title">
+        <strong>My Lists</strong>
+        <span id="toggle-lists">
+            <img src="{% static 'tasks/images/icons/collapse-lists-icon.svg' %}">
+        </span>
+    </p>
+    <ul class="lists-container"></ul>
+    <form class="add-list-form" method="POST" action="">
+        {% csrf_token %}
+        {{ list_form.list_name }}
+        <button id="add-list" type="submit">&plus;</button>
+    </form>
+</nav>
+<main>
+    <div class="page-title"></div>
+    <form class="add-task-form" method="POST" action="">
+        {% csrf_token %}
+        {{ task_form.task_name }}
+        {{ task_form.date_due }}
+        {{ task_form.list }} 
+        <button id="add-task" type="submit">&plus;</button>
+    </form>
+    <div class="tasks-container"></div>
+</main>
+{% endblock content %}
+
+{% block script %}
+<script>const csrftoken = '{{ csrf_token }}';</script>
+<script type="module" src="{% static 'tasks/javascript/main.js' %}"></script>
+<script type="module" src="{% static 'tasks/javascript/lists.js' %}"></script>
+<script type="module" src="{% static 'tasks/javascript/tasks.js' %}"></script>
+{% endblock script %}

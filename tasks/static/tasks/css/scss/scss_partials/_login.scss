@@ -1,0 +1,65 @@
+// Login.html styles
+
+@use 'variables';
+
+.login-page {
+    background-color: variables.$primary-color;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;   
+}
+
+.login-form-container {
+    align-items: center;
+    background-color: variables.$navbar-color;
+    border-right: 2px solid darken(variables.$navbar-color, 10%);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    justify-content: center;
+    padding: 2rem;
+    width: 100%;
+
+    form {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        min-width: 300px;
+        width: 50%;
+       
+        input {
+            border: 1px solid lightgrey;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            padding: 0.5rem 0.75rem;
+            width: 100%;
+        }
+    }
+
+    a {
+        color: variables.$primary-color;
+        font-weight: bold;
+
+        &:hover {
+            color: darken(variables.$primary-color, 10%);
+        }
+    }
+}
+
+.error-msg {
+    color: variables.$error-text-color;
+    font-size: 0.925rem;
+    height: 2rem;
+}
+
+// Mobile layout
+@media (max-width: 600px) {
+    .login-page {
+        grid-template-columns: 1fr;
+    }
+}

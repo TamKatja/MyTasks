@@ -1,0 +1,34 @@
+{% extends "tasks/layout.html" %}
+
+{% block content %}
+<div class="login-page">
+    <!--Login page-->
+    {% if page == "login" %}
+    <div class="login-form-container">
+        <h1>Login to MyTasks</h1>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input name="username" type="text" placeholder="Username" required autocomplete="off">
+            <input name="password" type="password" placeholder="Password" required autocomplete="off">
+            <div class="error-msg">{{ error }}</div>
+            <button class="login-btn" type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="{% url 'register' %}">Register now.</a></p>
+    </div>
+    <!--Register page-->
+    {% else %}
+    <div class="login-form-container">
+        <h1>Create an Account</h1>
+        <form method="POST" action="{% url 'register' %}">
+            {% csrf_token %}
+            <input name="username" type="text" placeholder="Username" required autocomplete="off">
+            <input name="password" type="password" placeholder="Password" required autocomplete="off">
+            <input name="password-confirmation" type="password" placeholder="Confirm password" required autocomplete="off">
+            <div class="error-msg">{{ error }}</div>
+            <button class="register-btn" type="submit">Register</button>
+        </form>
+        <p>Already have an account? <a href="{% url 'login' %}">Login now.</a></p>
+    </div>
+    {% endif %}
+</div>
+{% endblock content %}

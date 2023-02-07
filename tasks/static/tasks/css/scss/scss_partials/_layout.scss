@@ -1,0 +1,94 @@
+// Page layout styles
+
+@use 'variables';
+
+header {
+    align-items: center;
+    background-color: variables.$primary-color;
+    border-bottom: 2px solid darken(variables.$primary-color, 2%);
+    color: white;   
+    display: flex;
+    gap: 1rem;
+    height: variables.$header-height;
+    left: 0;
+    padding: 0rem 1rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2; 
+
+    a {
+        align-items: center;
+        display: flex;
+        flex-shrink: 0;
+        justify-content: center;
+    }
+
+    img {
+        height: 1.5rem;
+    }
+
+    div {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+}
+
+.navbar-control {
+    flex-grow: 1;
+
+    button {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        transition: transform 0.2s;
+    }
+
+    img {
+        height: 2rem;
+    }
+}
+
+main {
+    bottom: 0;
+    left: 0;
+    margin-left: variables.$navbar-width;
+    margin-top: variables.$header-height;
+    overflow-y: scroll;
+    padding: 1rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transition: margin 0.2s;
+}
+
+.page-title {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    h2 {
+        max-width: 90%;
+        overflow-wrap: break-word;
+    }
+
+    button {
+        flex-shrink: 0;
+    }
+}
+
+.navbar {
+    background-color: variables.$navbar-color;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    margin-top: variables.$header-height;
+    overflow-y: scroll;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    width: variables.$navbar-width;
+    z-index: 1; 
+}
