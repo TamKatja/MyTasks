@@ -3,12 +3,15 @@
 @use 'variables';
 
 %btn {
+    align-items: center;
     background-color: variables.$primary-color;
     border: none;
     border-radius: 0.25rem;
     color: white; 
+    display: flex;
     font-size: 1.5rem;
     flex-shrink: 0;
+    justify-content: center;
     height: 30px;
     width: 30px;
 }
