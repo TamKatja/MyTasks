@@ -85,9 +85,12 @@ This project is disctinct from previous course projects. It is neither an e-comm
 ## Installation:
 
 1. Clone this repository.
-2. 
-3. Run `python manage.py runserver` to start the web server.
-4. 
+2. Install project requirements using `pip install -r requirements.txt`.
+3. Install [postgres](https://www.postgresql.org/download/) and [pgAdmin](https://www.pgadmin.org/download/).
+4. Create a new postgres database and include database credentials in `settings.py`.
+5. Run `python manage.py makemigrations` and `python manage.py migrate`.
+6. For admin access create a new superuser by running `python manage.py createsuperuser`.
+7. Run `python manage.py runserver` to start the web server.
 
 <br>
 
