@@ -29,10 +29,7 @@ if os.getcwd() == '/app':
 else:
     DEBUG = str(os.environ.get('DEBUG')) == '1'
 
-
-ALLOWED_HOSTS = ['localhost']
-if not DEBUG:
-    ALLOWED_HOSTS += [os.environ.get('DJANGO_ALLOWED_HOST').split(',')]
+ALLOWED_HOSTS = ['127.0.0.1', 'mytasks-planner.herokuapp.com']
 
 
 # Application definition
