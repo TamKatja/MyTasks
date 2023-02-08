@@ -24,10 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if os.getcwd() == '/app':
-    DEBUG = str(os.environ.get('DEBUG')) == '0'
-else:
-    DEBUG = str(os.environ.get('DEBUG')) == '1'
+DEBUG = str(os.environ.get('DEBUG'))
 
 ALLOWED_HOSTS = ['127.0.0.1', 'mytasks-planner.herokuapp.com']
 
