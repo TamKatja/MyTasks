@@ -10,13 +10,11 @@ My [CS50W](https://cs50.harvard.edu/web/2020/) capstone project, entitled *MyTas
 <br>
 
 The **backend** of this application is built using Django. User data is stored in a postgres database and accessed via an API built using the Django REST framework. 
-<br>
 
 ### Django Models:
 - `User` - Utilises Django's `AbstractUser` model.
 - `List` - Stores all user created lists. A foreign key links each list to an individual user.
 - `Task` - Stores all user created tasks, including user generated names, the date each task was created and optionally the date each task is due to be completed. A foreign key links each task to an individual user. Additionally, a second foreign key optionally links each task a list in which it is included. Tasks are primarily ordered by their due date, although if this is not provided, a user's most recently added tasks are disaplyed first.
-<br>
 
 ### Django Routes:
 - **Login** `login/` - Users are redirected to the index page if a valid username and password are provided via the login form.
@@ -95,3 +93,5 @@ This project is disctinct from previous course projects. It is neither an e-comm
 <br>
 
 ## Screenshots:
+
+![MyTasks screenshot](https://user-images.githubusercontent.com/110285021/217493852-3a3c25b2-3420-4c93-a661-da1b72f8bc13.png)
