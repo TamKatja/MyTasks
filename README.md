@@ -9,7 +9,7 @@ My [CS50W](https://cs50.harvard.edu/web/2020/) capstone project, entitled *MyTas
 📝 See [project specifications](https://cs50.harvard.edu/web/2020/projects/final/capstone/).
 <br>
 
-The **backend** of this application is built using Django. User data is stored in a postgres database and accessed via an API built using the Django REST framework. 
+The **back-end** of this application is built using Django. User data is stored in a postgres database and accessed via an API built using the Django REST framework. 
 
 ### Django Models:
 - `User` - Utilises Django's `AbstractUser` model.
@@ -29,7 +29,7 @@ The **backend** of this application is built using Django. User data is stored i
 - `task/<task_id>` - Retrieves a single user task via a GET request. Removes a completed user task via a DELETE request when the *task-checkbox* is clicked.
 <br>
 
-The **frontend** of this application is built using HTML, CSS/Sass and Vanilla JavaScript. Inspired by the popularity of single-page applications (SPAs) this project only contains 3 HTML pages (including `layout.html`, `index.html` and `login.html`) and instead relies on JavaScript/AJAX (including `main.js`, `lists.js` and `tasks.js`) to dynamically update sections of the page as required. This means when a user adds or removes a task the page is automatically updated without the need to refresh or load a new page. This improves user experience (UX) and application performance. Additionally, the use of Sass, a CSS pre-processer, improves stylesheet readability and enables code modularisation.
+The **front-end** of this application is built using HTML, CSS/Sass and Vanilla JavaScript. Inspired by the popularity of single-page applications (SPAs) this project only contains 3 HTML pages (including `layout.html`, `index.html` and `login.html`) and instead relies on JavaScript/AJAX (including `main.js`, `lists.js` and `tasks.js`) to dynamically update sections of the page as required. This means when a user adds or removes a task the page is automatically updated without the need to refresh or load a new page. This improves user experience (UX) and application performance. Additionally, the use of Sass, a CSS pre-processer, improves stylesheet readability and enables code modularisation.
 
 <br>
 
@@ -92,6 +92,6 @@ This project is disctinct from previous course projects. It is neither an e-comm
 
 <br>
 
-## Screenshots:
+## Screenshot:
 
 ![MyTasks screenshot](https://user-images.githubusercontent.com/110285021/217493852-3a3c25b2-3420-4c93-a661-da1b72f8bc13.png)
