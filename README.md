@@ -34,7 +34,7 @@ The **front-end** of this application is built using HTML, CSS/Sass and Vanilla 
 <br>
 
 ## Distinctiveness and Complexity:
-This project is distinct from previous course projects. It is neither an e-commerce site nor a social network as produced in projects 2 and 4 respectively. As per the course requirements, this project is built using Django on the back-end, including 2 custom models (as per above), and JavaScript on the front-end. Additionally, this project utilizes CSS layout models, media queries and JavaScript event handlers to ensure mobile responsiveness.
+This project is distinct from previous course projects. It is neither an e-commerce site nor a social network as produced in projects 2 and 4 respectively. As per the course requirements, this project is built using Django on the back-end, including 2 custom models and a REST API (as per above), and HTML, CSS/Sass and JavaScript on the front-end. Additionally, this project utilizes CSS layout models, media queries and JavaScript event handlers to ensure mobile responsiveness.
 
 <br>
 
