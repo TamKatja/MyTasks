@@ -1,7 +1,19 @@
 # CS50W Capstone - MyTasks
 
-My [CS50W](https://cs50.harvard.edu/web/2020/) capstone project, entitled *MyTasks*, is a task management web application that helps users manage their tasks online. Once registered, MyTask users can easily add and remove personal tasks, set optional task due dates and organise their tasks into separate lists. Responsive design ensures MyTasks will adapt to different devices.
-<br>
+### Table of Contents:
+
+-   [Overview](#overview)<br>
+-   [Distinctiveness and Complexity](#distinctiveness-and-complexity)<br>
+-   [Directory and File Contents](#directory-and-file-contents)<br>
+-   [How to Run this Application](#how-to-run-this-application)<br>
+-   [Application Screenshot](#application-screenshot)<br>
+    <br>
+
+---
+
+## Overview:
+
+My [CS50W](https://cs50.harvard.edu/web/2020/) capstone project, entitled _MyTasks_, is a task management web application that helps users manage their tasks online. Once registered, MyTask users can easily add and remove personal tasks, set optional task due dates and organise their tasks into separate lists. Responsive design ensures MyTasks will adapt to use on different devices.
 
 ▶️ See [video preview](https://www.youtube.com/watch?v=F3huCpuxGGA).
 <br>
@@ -9,78 +21,140 @@ My [CS50W](https://cs50.harvard.edu/web/2020/) capstone project, entitled *MyTas
 📝 See [project specifications](https://cs50.harvard.edu/web/2020/projects/final/capstone/).
 <br>
 
-The **back-end** of this application is built using Django. User data is stored in a Postgres database and accessed via an API built using the Django REST framework. 
-
-### Django Models:
-- `User` - Utilises Django's `AbstractUser` model.
-- `List` - Stores all user-created lists. A foreign key links each list to an individual user.
-- `Task` - Stores all user-created tasks, including user-generated names, the date each task was created and optionally the date each task is due to be completed. A foreign key links each task to an individual user. Additionally, a second foreign key optionally links each task to the list in which it is included. Tasks are primarily ordered by their due date, although if this is not provided, a user's most recently added tasks are displayed first.
-
-### Django Routes:
-- **Login** `login/` - Users are redirected to the index page if a valid username and password are provided via the login form.
-- **Register** `register/` - A new user object is created if a valid username, password and password confirmation are provided via the registration form. If successful, users are redirected to the index page.
-- **Logout** `logout/` - When the logout icon is clicked, users are logged out and redirected back to the login page.
-- **Index** `/` - Instantiates an empty *add-list-form* and *add-task-form* to render on the application's main page.
-#### API Endpoints:
-- `lists/` - Retrieves all user lists via a GET request. Creates a new user list via a POST request when the *add-list-form* is submitted.
-- `list/<list_id>` - Retrieves a single user list via a GET request. Removes a completed user list via a DELETE request when the *list-checkbox* is clicked.
-- `tasks/` - Retrieves all user tasks via a GET request. Creates a new user task via a POST request when the *add-task-form* is submitted.
-- `tasks/<list_id>` - Utilises the optional *list_id* parameter in the *api_tasks* view to retrieve all user tasks within a single list via a GET request.
-- `task/<task_id>` - Retrieves a single user task via a GET request. Removes a completed user task via a DELETE request when the *task-checkbox* is clicked.
-<br>
-
-The **front-end** of this application is built using HTML, CSS/Sass and Vanilla JavaScript. Inspired by the popularity of single-page applications (SPAs) this project only contains 3 HTML pages (including `layout.html`, `index.html` and `login.html`) and instead relies on JavaScript/AJAX (including `main.js`, `lists.js` and `tasks.js`) to dynamically update sections of the page as required. This means when a user adds or removes a task the page is automatically updated without the need to refresh or load a new page. This improves user experience (UX) and application performance. Additionally, the use of Sass, a CSS pre-processer, improves stylesheet readability and enables code modularisation.
-
-<br>
+---
 
 ## Distinctiveness and Complexity:
-This project is distinct from previous course projects. It is neither an e-commerce site nor a social network as produced in projects 2 and 4 respectively. As per the course requirements, this project is built using Django on the back-end, including 2 custom models and a REST API (as per above), and HTML, CSS/Sass and JavaScript on the front-end. Additionally, this project utilizes CSS layout models, media queries and JavaScript event handlers to ensure mobile responsiveness.
 
-<br>
+As per the project guidelines, my application must adhere to the following requirements.
+
+> Your web application must be sufficiently distinct from the other projects in this course (and, in addition, may not be based on the old CS50W Pizza project), and more complex than those.
+
+I believe this project is distinct from all other course projects. It is neither an e-commerce site nor a social network as produced in projects 2 and 4 respectively. It is also not similar to any projects assigned to students in previous years.
+
+This project is entirely built from scratch and draws on the knowledge I have gained throughout the CS50W course. User input is validated on both the front-end and back-end. The application is configured to connect to a Postgres database, rather than a default SQLite database, to ensure scalability if required.
+
+To connect the front-end and back-end I built a custom REST API, using the Django REST framework, which includes 5 different end-points to retrieve, create and delete user list and task data. I used Django's `ModelSerializer` class to convert complex model/queryset data into native Python datatypes that could be more easily parsed into JSON. A custom validator within the `TaskSerializer` class also prevents users from entering invalid task due dates.
+
+Use of the JavaScript and the fetch API allows for user data to be retrieved asynchronously and elements of the page updated dynamically to improve user experience (UX) and application performance. Additionally, All custom styles for this project are implemented using Sass to modularise code and maintain stylesheet readability.
+
+> Your web application must utilize Django (including at least one model) on the back-end and JavaScript on the front-end.
+
+The back-end of my project is built using the Django framework, including 2 custom models (`List` and `Task`). User data is stored in a Postgres database and accessed via a custom API. The font-end of my project relies on JavaScript to dynamically update the sections of the page as required.
+
+> Your web application must be mobile-responsive.
+
+This project utilises CSS layout models, media queries and JavaScript event handlers to ensure it is fully mobile responsive. For example, on mobile devices the sidebar is automatically hidden on page load and extends to fill the width of the screen so as not to 'squash' the page contents.
+
+---
 
 ## Directory and File Contents:
-    - planner/  <-- Project directory.
-        - __init__.py  <-- Auto-generated by Django. 
-        - agsi.py  <-- Auto-generated by Django. 
-        - settings.py  <-- Project configuration.
-        - urls.py  <-- Define project routes.
-        - wsgi.py  <-- Auto-generated by Django. 
-    - tasks/  <-- Application directory.
-        - migrations  <-- Contain migration files.
-        - static/tasks  <-- Contain application static files.
-            - css  <-- Contain stylesheets.
-                - scss  <-- Contain Sass (.scss) files.
-                    - scss_parials  <-- Contain Sass (.scss) partials.
-                    - main.scss  <-- Main Sass source file.
-                - styles.css  <-- Main compiled CSS file.
-                - styles.css.map  <-- Auto-generated by Sass.
-            - images/icons  <-- Contain .svg icons
-            - javascript  <-- Contain JavaScript files.
-                - lists.js  <-- Script which uses fetch API to GET, POST and DELETE user lists.
-                - main.js  <-- Script which controls navbar interactivity.
-                - tasks.js  <-- Script which uses fetch API to GET, POST and DELETE user tasks.
-        - templates/tasks  <-- Contain application HTML templates.
-            - index.html <-- Extends layout.html, displays index page content.
-            - layout.html  <-- Base template.
-            - login.html  <-- Extends layout.html, renders login and registration forms.
-        - __init__.py  <-- Auto-generated by Django. 
-        - admin.py  <-- Define models accessible in the Django admin interface.
-        - apps.py  <-- Auto-generated by Django. 
-        - forms.py  <-- Define application model forms.
-        - models.py  <-- Define application models.
-        - serializers.py  <-- Contain serializers to convert complex data to JSON.
-        - test.py  <-- Auto-generated by Django.
-        - urls.py  <-- Define application routes.
-        - views.py  <-- Contain application views.
-    - .gitignore  <--- Specify untracked files.
-    - Procfile  <-- Specify app startup commands for deployment on Heroku.
-    - manage.py  <-- Command-line utility auto-generated by Django.
-    - requirements.txt  <-- List of project dependencies.
-    - runtime.txt  <-- Specify Python version for deployment on Heroku.
 
-<br>
+-   `planner/` - Main project directory.
 
-## Installation:
+    -   `__init__.py` - Auto-generated by Django.
+
+    -   `agsi.py` - Auto-generated by Django.
+
+    -   `settings.py` - Project configuration.
+
+    -   `urls.py` - Define project routes.
+
+    -   `wsgi.py` - Auto-generated by Django.
+
+-   `tasks/` - Application directory.
+
+    -   `migrations` - Contain migration files.
+
+    -   `static/tasks` - Contain application static files.
+
+        -   `css/` - Contain stylesheets.
+
+            -   `scss/` - Contain Sass (.scss) files.
+
+                -   `sass_partials` - Contain Sass (.scss) partials (modules).
+
+                -   `main.scss` - Main sass source file which imports all partials.
+
+            -   `styles.css` - Main compiled CSS file.
+
+            -   `styles.css.map` - Auto-generated by Sass.
+
+        -   `images/icons` - Contain .svg icons.
+
+        -   `javascript` - Contain JavaScript files.
+
+            -   `lists.js` - Script which uses fetch API to GET, POST and DELETE user lists.
+
+            -   `main.js`- Script which controls navbar interactivity.
+
+            -   `tasks.js` - Script which uses fetch API to GET, POST and DELETE user tasks.
+
+    *   `templates/tasks` - Contain application HTML templates.
+
+        -   `index.html` - Extends layout.html, displays index page content.
+
+        -   `layout.html` - Base HTML template.
+
+        -   `login.html` - Extends layout.html, renders login and registration forms.
+
+    *   `__init__.py` - Auto-generated by Django.
+
+    *   `admin.py` - Define models accessible in the Django admin interface.
+
+    *   `apps.py` - Auto-generated by Django.
+
+    *   `forms.py` - Define application model forms.
+
+    *   `models.py` - Define application models [(see below)](#django-models).
+
+    *   `serializers.py` - Contain serializers to convert complex data to JSON.
+
+    *   `test.py` - Auto-generated by Django.
+
+    *   `urls.py` - Define application routes [(see below)](#django-models).
+
+    *   `views.py` - Contain application views, including API function-based views [(see below)](#django-models).
+
+-   `.gitignore` - Specify untracked files.
+
+-   `Procfile` - Specify app startup commands for deployment on Heroku.
+
+-   `manage.py` - Command-line utility auto-generated by Django.
+
+-   `requirements.txt` - List of project dependencies.
+
+-   `runtime.txt` - Specify Python version for deployment on Heroku.
+
+---
+
+### Django Models:
+
+-   `User` - Utilises Django's `AbstractUser` model.
+-   `List` - Stores all user-created lists. A foreign key links each list to an individual user.
+-   `Task` - Stores all user-created tasks, including user-generated names, the date each task was created and optionally the date each task is due to be completed. A foreign key links each task to an individual user. Additionally, a second foreign key optionally links each task to the list in which it is included. Tasks are primarily ordered by their due date, although if this is not provided, a user's most recently added tasks are displayed first.
+
+---
+
+### Django Routes:
+
+-   **Login** `login/` - Users are redirected to the index page if a valid username and password are provided via the login form.
+-   **Register** `register/` - A new user object is created if a valid username, password and password confirmation are provided via the registration form. If successful, users are redirected to the index page.
+-   **Logout** `logout/` - When the logout icon is clicked, users are logged out and redirected back to the login page.
+-   **Index** `/` - Instantiates an empty _add-list-form_ and _add-task-form_ to render on the application's main page.
+
+---
+
+### API Endpoints:
+
+-   `lists/` - Retrieves all user lists via a GET request. Creates a new user list via a POST request when the _add-list-form_ is submitted.
+-   `list/<list_id>` - Retrieves a single user list via a GET request. Removes a completed user list via a DELETE request when the _list-checkbox_ is clicked.
+-   `tasks/` - Retrieves all user tasks via a GET request. Creates a new user task via a POST request when the _add-task-form_ is submitted.
+-   `tasks/<list_id>` - Utilises the optional _list_id_ parameter in the _api_tasks_ view to retrieve all user tasks within a single list via a GET request.
+-   `task/<task_id>` - Retrieves a single user task via a GET request. Removes a completed user task via a DELETE request when the _task-checkbox_ is clicked.
+
+---
+
+## How to Run this Application:
 
 1. Clone this repository.
 2. Install project requirements using `pip install -r requirements.txt`.
@@ -90,8 +164,8 @@ This project is distinct from previous course projects. It is neither an e-comme
 6. For admin access create a new superuser by running `python manage.py createsuperuser`.
 7. Run `python manage.py runserver` to start the web server.
 
-<br>
+---
 
-## Screenshot:
+## Application Screenshot:
 
 ![MyTasks screenshot](https://user-images.githubusercontent.com/110285021/217493852-3a3c25b2-3420-4c93-a661-da1b72f8bc13.png)
